@@ -89,4 +89,16 @@ export const listDistributions = () => request('/api/distributions')
 
 export const getDistribution = (id) => request(`/api/distributions/${id}`)
 
+export const loginDonor = (credentials) =>
+  request('/api/donors/login', { method: 'POST', body: JSON.stringify(credentials) })
+
+export const setDonorPassword = (id, password) =>
+  request(`/api/donors/${id}/set-password`, { method: 'PUT', body: JSON.stringify({ password }) })
+
+export const loginRecipient = (credentials) =>
+  request('/api/recipients/login', { method: 'POST', body: JSON.stringify(credentials) })
+
+export const setRecipientPassword = (id, password) =>
+  request(`/api/recipients/${id}/set-password`, { method: 'PUT', body: JSON.stringify({ password }) })
+
 export { ApiError }

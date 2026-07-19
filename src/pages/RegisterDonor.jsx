@@ -9,7 +9,7 @@ const DONOR_TYPES = ['Restaurant', 'Household', 'Caterer', 'Grocery Store']
 export default function RegisterDonor() {
   const navigate = useNavigate()
   const [form, setForm] = useState({
-    name: '', email: '', phone: '', donorType: DONOR_TYPES[0], address: '',
+    name: '', email: '', phone: '', donorType: DONOR_TYPES[0], address: '', password: '',
   })
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
@@ -63,6 +63,10 @@ export default function RegisterDonor() {
         <label>
           Address
           <input required value={form.address} onChange={(e) => update('address', e.target.value)} />
+        </label>
+        <label>
+          Password
+          <input required type="password" minLength={6} value={form.password} onChange={(e) => update('password', e.target.value)} />
         </label>
         <button className="btn primary" type="submit" disabled={saving}>
           {saving ? 'Registering…' : 'Register'}
