@@ -16,14 +16,24 @@ export default function NewDonation() {
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
 
+  // Earliest allowed expiry: 15 minutes from now, so there's realistically
+  // time for an NGO to claim and pick it up before it lapses.
+  const minExpiry = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString().slice(0, 16)
+
   function update(field, value) {
     setForm((f) => ({ ...f, [field]: value }))
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
-    setSaving(true)
     setError('')
+
+    if (new Date(form.expiryTime) < new Date(Date.now() + 2 * 60 * 60 * 1000)) {
+      setError('Expiry time must be at least 2 hours from now, so there\'s time for pickup.')
+      return
+    }
+
+    setSaving(true)
     try {
       await createDonation({
         donorId: storedDonor.id,
@@ -111,6 +121,7 @@ export default function NewDonation() {
           <input
             required
             type="datetime-local"
+            min={minExpiry}
             value={form.expiryTime}
             onChange={(e) => update('expiryTime', e.target.value)}
           />

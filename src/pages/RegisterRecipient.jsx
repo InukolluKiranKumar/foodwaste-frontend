@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createRecipient } from '../api/client.js'
 import { Notice } from '../components/Ui.jsx'
+import FindAccount from '../components/FindAccount.jsx'
 
 export default function RegisterRecipient() {
   const navigate = useNavigate()
@@ -32,6 +33,7 @@ export default function RegisterRecipient() {
     <div>
       <h1>Register as an NGO</h1>
       <p className="page-intro">So you can claim available food and track pickups.</p>
+      <FindAccount type="recipient" />
       <Notice type="error">{error}</Notice>
       <form onSubmit={handleSubmit}>
         <label>

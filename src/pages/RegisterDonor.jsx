@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createDonor } from '../api/client.js'
 import { Notice } from '../components/Ui.jsx'
+import FindAccount from '../components/FindAccount.jsx'
 
 const DONOR_TYPES = ['Restaurant', 'Household', 'Caterer', 'Grocery Store']
 
@@ -36,6 +37,7 @@ export default function RegisterDonor() {
     <div>
       <h1>Register as a donor</h1>
       <p className="page-intro">Restaurants, households, caterers, and stores with surplus food.</p>
+      <FindAccount type="donor" />
       <Notice type="error">{error}</Notice>
       <form onSubmit={handleSubmit}>
         <label>
