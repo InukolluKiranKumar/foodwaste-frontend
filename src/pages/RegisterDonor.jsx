@@ -50,7 +50,7 @@ export default function RegisterDonor() {
         </label>
         <label>
           Phone
-          <input required value={form.phone} onChange={(e) => update('phone', e.target.value)} />
+          <input required type="tel" pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit Indian mobile number" value={form.phone} onChange={(e) => update("phone", e.target.value)} />
         </label>
         <label>
           Donor type
