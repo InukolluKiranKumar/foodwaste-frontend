@@ -225,3 +225,23 @@ textarea { resize: vertical; min-height: 70px; }
 
 .navbar .brand-block { display: flex; flex-direction: column; gap: 1px; }
 .navbar .brand-tag { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.02em; }
+
+.menu-wrap { position: relative; }
+.menu-dots { font-size: 1.1rem; padding: 6px 12px; line-height: 1; }
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  min-width: 220px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.menu-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.85rem; }
+.menu-empty { font-size: 0.85rem; color: var(--text-muted); }
